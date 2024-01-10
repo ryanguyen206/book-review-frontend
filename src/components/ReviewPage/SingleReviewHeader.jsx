@@ -7,7 +7,7 @@ import Comment from './Comment'
 const SingleReviewHeader = ({id}) => {
 
 
-  const url = `${process.env.REACT_APP_API}/api/book-review/${id}`
+  const url = `${import.meta.env.VITE_URL}/api/book-review/${id}`
 
   const {data : review} = useQuery({
     queryKey:['review', id],

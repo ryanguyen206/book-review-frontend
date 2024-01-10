@@ -5,7 +5,7 @@ import Comment from './Comment';
 
 const SingleReviewFeed = ({id}) => {
 
-    const url =  `${process.env.REACT_APP_API}/api/book-review/${id}/messages/`
+    const url =  `${import.meta.env.VITE_URL}/api/book-review/${id}/messages/`
 
     const {data : comments} = useQuery({
         queryKey: ['messages', id],

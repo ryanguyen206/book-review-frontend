@@ -23,7 +23,7 @@ const Comment = ({id, comments}) => {
         e.preventDefault()
         const inputValue = inputRef.current.value;
         try {
-            const response = await fetch(`${process.env.REACT_APP_API}/api/book-review/${id}/messages/`, {
+            const response = await fetch(`${import.meta.env.VITE_URL}/api/book-review/${id}/messages/`, {
                 method:'POST',
                 headers: {
                     'Content-Type':'application/json',
