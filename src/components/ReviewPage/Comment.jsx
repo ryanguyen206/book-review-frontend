@@ -8,7 +8,6 @@ import useToastNotifications from '../../hooks/useToastNotifications';
 const Comment = ({id, comments}) => {
 
     const inputRef = useRef(null);
-    console.log(comments)
     const queryClient = useQueryClient();
 
     let {user, authTokens} = useContext(AuthContext)

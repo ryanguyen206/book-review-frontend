@@ -8,10 +8,7 @@ import { useState, useEffect } from 'react'
 const HomePage = () => {
 
   const [currentGenre, setCurrentGenre] = useState(null)
-  useEffect(() => {
-    console.log(currentGenre)
-  
-  }, [currentGenre])
+
   
   return (
     <div>

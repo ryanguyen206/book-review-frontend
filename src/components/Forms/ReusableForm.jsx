@@ -2,12 +2,6 @@ import React, { useEffect } from 'react';
 
 const ReusableForm = ({ formState, handleChange, handleSubmit, formFields, buttonText, mutation }) => {
   const isLoading = mutation?.isLoading || false;
-
-    
-    useEffect(() => {
-      console.log(isLoading)
-  
-    }, [isLoading])
     
   return (
     <form className="space-y-6" onSubmit={handleSubmit}>

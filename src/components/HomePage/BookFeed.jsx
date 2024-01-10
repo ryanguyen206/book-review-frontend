@@ -12,7 +12,6 @@ const BookFeed = ({currentGenre}) => {
   const {data} = useQuery({
       queryKey:['reviews'], 
       queryFn: async () => await handleGetRequest(`${import.meta.env.VITE_URL}/api/book-review/`),
-      onSuccess: () => console.log(data)
   })
 
   const filteredReviews = currentGenre ? data.filter((review) => review.genre_name === currentGenre) : data;

@@ -12,7 +12,6 @@ const SingleReviewHeader = ({id}) => {
   const {data : review} = useQuery({
     queryKey:['review', id],
     queryFn: () => handleGetRequest(url),
-    onSuccess: () => console.log(review)
   })
 
   return (

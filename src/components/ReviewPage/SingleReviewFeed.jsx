@@ -10,7 +10,6 @@ const SingleReviewFeed = ({id}) => {
     const {data : comments} = useQuery({
         queryKey: ['messages', id],
         queryFn: () => handleGetRequest(url),
-        onSuccess: () => console.log(comments)
     })
 
     return (
