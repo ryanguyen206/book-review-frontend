@@ -22,7 +22,7 @@ const SingleBookFeed = ({review}) => {
      })
 
     const handleDelete = async (id) => {
-        const res = await fetch(`${process.env.REACT_APP_API}/api/book-review/${id}/delete/`, {
+        const res = await fetch(`${import.meta.env.VITE_URL}/api/book-review/${id}/delete/`, {
             method:'DELETE',
             headers: {
               'Authorization': `Bearer ${authTokens.access}`

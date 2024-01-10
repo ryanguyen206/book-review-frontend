@@ -4,7 +4,7 @@ import { useQuery } from "react-query"
 const useGenre = () => {
     const {data: genres} = useQuery({
         queryKey:['genres'], 
-        queryFn: async () => await handleGetRequest(`${process.env.REACT_APP_API}/api/genre/`),
+        queryFn: async () => await handleGetRequest(`${import.meta.env.VITE_URL}/api/genre/`),
     })
 
   

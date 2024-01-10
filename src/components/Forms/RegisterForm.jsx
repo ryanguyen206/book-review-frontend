@@ -23,7 +23,7 @@ const RegisterForm = () => {
               useToastNotifications('Username and password length must be greater than six', 'error');
               return;
         }
-        let response = await fetch(`${process.env.REACT_APP_API}/api/token/register/`, {
+        let response = await fetch(`${import.meta.env.VITE_URL}/api/token/register/`, {
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
