@@ -19,9 +19,9 @@ const SingleReviewHeader = ({id}) => {
       <>
         {review && 
             <div className='p-10'>
-                <div className='block md:flex md:justify-between md:items-center'>
-                  <p className='uppercase mt-4 text-2xl font-semibold mb-4 '>{review?.book_title}</p>
-                  <small className='font-light text-base'>{timeAgo(review.created)}</small>    
+                <div className='flex flex-col md:flex-row md:justify-between md:items-center'>
+                  <p className='order-2 md:order-1 uppercase mt-4 text-2xl font-semibold m2-4 '>{review?.book_title}</p>
+                  <small className='order-1 md:order-2 font-light text-base'>{timeAgo(review.created)}</small>    
                 </div>
                 <p className='text-indigo-400 my-2'>Hosted by: {review?.username}</p>
                 <p className='border px-2 rounded-xl bg-stone-400 text-white inline-block'> {review?.genre_name}</p>
