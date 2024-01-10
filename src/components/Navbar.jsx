@@ -15,7 +15,7 @@ const Navbar = () => {
                     <li className='ml-2'><Link to='/'>Book Review</Link></li>
                 </div>
                 <div className='flex'>
-                    <li className='pr-6 hover:text-stone-400'><Link to ='/create'>Create</Link></li>
+                    {user && <li className='pr-6 hover:text-stone-400'><Link to ='/create'>Create</Link></li>}
                     {user ? <li className='hover:cursor-pointer hover:text-stone-400'onClick={logoutUser}>Logout</li> :<li className='hover:cursor-pointer hover:text-stone-400'><Link to='/login'>Login</Link></li>}
                 </div>
             
