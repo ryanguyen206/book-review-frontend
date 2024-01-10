@@ -32,22 +32,22 @@ const SingleBookFeed = ({review}) => {
 
   return (
         <div className='border p-10 shadow-md flex flex-col justify-between' key={review.id}>
-            <div className='flex justify-between'>
-              <div className='lg:flex lg:gap-4 lg:items-center '>
-                <p className='text-indigo-400 text-lg '>@{review?.username}</p>
-                <p className='border inline-block px-2 rounded-xl mt-2 md:mt-4 lg:mt-0 bg-stone-400 text-white '>{review?.genre_name}</p>
+            <div className='flex flex-col justify-center md:flex-row md:justify-between'>
+              <div className='order-2 md:order-1 md:flex md:gap-4 md:items-center '>
+                <p className='text-indigo-400 text-lg mt-2 md:mt-0 '>@{review?.username}</p>
+                <p className='border inline-block px-2 rounded-xl mt-3 md:mt-0 bg-stone-400 text-white '>{review?.genre_name}</p>
               </div>
-              <small className='mt-1'>{timeAgo(review.created)}</small>
+              <small className='order-1 md:order-2'>{timeAgo(review.created)}</small>
             </div>
      
             <p className='uppercase mt-4 text-2xl font-semibold '>{review?.book_title}</p>
             <small className='text-base'>{review?.review_title}</small>
             <p className='mt-10'>{review?.body.slice(0, 100)}...</p>
             
-            <div className='flex justify-between'>
-                <button className='mt-10 bg-indigo-400 text-white border p-2 px-4 rounded-xl hover:bg-indigo-500 shadow-lg'><Link to={`/review/${review.id}`}>Join this review</Link></button>
+            <div className='flex flex-col sm:flex-row justify-between '>
+                <button className='w-44 sm:w-auto mt-10 bg-indigo-400 text-white border p-2 px-4 rounded-xl hover:bg-indigo-500 shadow-lg'><Link to={`/review/${review.id}`}>Join this review</Link></button>
                 {user.user_id === review?.creator ? 
-                <button className='mt-10 bg-red-400 text-white border p-2 px-4 rounded-xl hover:bg-red-500 shadow-lg' onClick={() => mutatation.mutate(review.id)}>Delete</button> 
+                <button className='w-44 sm:w-auto mt-10 bg-red-400 text-white border p-2 px-4 rounded-xl hover:bg-red-500 shadow-lg' onClick={() => mutatation.mutate(review.id)}>Delete</button> 
                 : null}
             </div>
           
