@@ -47,7 +47,7 @@ const SingleBookFeed = ({review}) => {
             <div className='flex flex-col sm:flex-row justify-between '>
                 <button className='w-44 sm:w-auto mt-10 bg-indigo-400 text-white border p-2 px-4 rounded-xl hover:bg-indigo-500 shadow-lg'><Link to={`/review/${review.id}`}>Join this review</Link></button>
                 {user.user_id === review?.creator ? 
-                <button className='w-44 sm:w-auto mt-10 bg-red-400 text-white border p-2 px-4 rounded-xl hover:bg-red-500 shadow-lg' onClick={() => mutatation.mutate(review.id)}>Delete</button> 
+                <button className='w-44 sm:w-auto mt-4 sm:mt-10 bg-red-400 text-white border p-2 px-4 rounded-xl hover:bg-red-500 shadow-lg' onClick={() => mutatation.mutate(review.id)}>Delete</button> 
                 : null}
             </div>
           
