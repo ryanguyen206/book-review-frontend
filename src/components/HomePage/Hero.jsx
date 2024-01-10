@@ -9,7 +9,7 @@ const Hero = () => {
 
     const {data} = useQuery({
         queryKey:['reviews'], 
-        queryFn: async () => await handleGetRequest('http://127.0.0.1:8000/api/book-review/'),
+        queryFn: async () => await handleGetRequest(`${process.env.REACT_APP_API}/api/book-review/`),
     })
 
     

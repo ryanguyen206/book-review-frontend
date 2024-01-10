@@ -24,7 +24,7 @@ const Comment = ({id, comments}) => {
         e.preventDefault()
         const inputValue = inputRef.current.value;
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/book-review/${id}/messages/`, {
+            const response = await fetch(`${process.env.REACT_APP_API}/api/book-review/${id}/messages/`, {
                 method:'POST',
                 headers: {
                     'Content-Type':'application/json',

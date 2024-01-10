@@ -5,7 +5,7 @@ import Comment from './Comment';
 
 const SingleReviewFeed = ({id}) => {
 
-    const url =  `http://127.0.0.1:8000/api/book-review/${id}/messages/`
+    const url =  `${process.env.REACT_APP_API}/api/book-review/${id}/messages/`
 
     const {data : comments} = useQuery({
         queryKey: ['messages', id],

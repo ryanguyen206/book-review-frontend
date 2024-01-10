@@ -31,7 +31,7 @@ const CreateReviewForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const res = await fetch('http://127.0.0.1:8000/api/book-review/', {
+        const res = await fetch(`${process.env.REACT_APP_API}/api/book-review/`, {
           method:'POST',
           headers: {
             'Content-Type':'application/json',
