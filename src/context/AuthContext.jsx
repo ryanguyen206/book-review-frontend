@@ -26,12 +26,14 @@ export const AuthProvider = ({children}) => {
         })
         let data = await response.json()
 
+        console.log(response)
+
         if(response.status === 200){
             setAuthTokens(data)
             setUser(jwtDecode(data.access))
             localStorage.setItem('authTokens', JSON.stringify(data))
             navigate('/')
-        }else if (response.status === 401 && response.statusText === 'Unauthorized') {
+        }else if (response.status === 401) {
             useToastNotifications('Incorrect credentials', 'error')
         }
     }
