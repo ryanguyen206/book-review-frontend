@@ -18,9 +18,12 @@ const RegisterForm = () => {
 
   let registerUser = async (e)=> {
         e.preventDefault()
-        if (e.target.username.value.length < 6 || e.target.password.value.length < 6)
+        if (e.target.username.value.length < 6 || e.target.username.value.length > 15)
         {
-              useToastNotifications('Username and password length must be greater than six', 'error');
+              useToastNotifications('Username must be between 6-15 characters', 'error');
+              return;
+        } else if (e.target.password.value.length < 6) {
+              useToastNotifications('Password must be greater than 6 characters', 'error');
               return;
         }
         let response = await fetch(`${import.meta.env.VITE_URL}/api/token/register/`, {
