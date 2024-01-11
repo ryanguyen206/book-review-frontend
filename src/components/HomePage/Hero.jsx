@@ -1,23 +1,47 @@
-import React from 'react'
+import React, {} from 'react'
 import hero from '../../assets/hero.jpg'
 import { useQuery } from 'react-query'
 import { handleGetRequest } from '../../utils/helper'
+import { TypeAnimation } from 'react-type-animation';
 
 
 
 const Hero = () => {
+ 
+    
+    
+
 
     const {data} = useQuery({
         queryKey:['reviews'], 
         queryFn: async () => await handleGetRequest(`${import.meta.env.VITE_URL}/api/book-review/`),
     })
 
+    const {data : user_count} = useQuery({
+        queryKey:['user_count'], 
+        queryFn: async () => await handleGetRequest(`${import.meta.env.VITE_URL}/api/user_count`),
+    })
+
     
   return (
     <div className='mt-20 text-indigo-500 md:mt-28'>
-        <h1 className='text-center text-3xl md:text-5xl md:leading-tight  '>Discover, Review, Discuss  <br/> <span className='text-indigo-300'> Your Literary Haven</span> </h1>
-        <h2></h2>
-        <div className='mt-10'>   
+        <h1 className='text-center text-3xl md:text-5xl md:leading-tight text-indigo-300'>Your Literary Haven </h1>
+        <TypeAnimation
+                preRenderFirstString={true}
+                sequence={[
+                    'Discover',
+                    1000, 
+                    'Discuss',
+                    1000,
+                    'Review',
+                    1000,
+                ]}
+                wrapper="span"
+                style={{ fontSize: '3rem', display: 'block', minHeight: '200px', textAlign:'center', marginTop:'4rem' }}
+                speed={25}
+                repeat={Infinity}
+        />
+        <div className='mt-6'>   
            <img src={hero} className='h-64 w-full object-cover'/> 
         </div>
         <div className='text-center'>
@@ -27,8 +51,8 @@ const Hero = () => {
                         <h2 className='text-xl '>Reviews</h2>
                     </div>
                     <div className='flex items-center gap-4 md:block '>
-                        <p className='text-4xl font-semibold'>20+</p>
-                        <h2 className='text-xl '> Users</h2>
+                        {user_count && <p className='text-4xl font-semibold'>{user_count.user_count}+</p>}
+                        <h2 className='text-xl '>Users</h2>
                     </div>
            
             </div>
