@@ -8,7 +8,7 @@ const Navbar = () => {
     
     let {user, logoutUser} = useContext(AuthContext)
     return (
-        <div className='py-10 text-lg'>
+        <div className='py-10 text-xl'>
             <ul className='flex justify-between text-stone-700 font-medium'>
                 <div className='flex items-center'> 
                     <RiBook2Fill/>

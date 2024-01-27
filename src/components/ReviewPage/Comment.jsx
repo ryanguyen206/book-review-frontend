@@ -46,16 +46,16 @@ const Comment = ({id, comments}) => {
 
   return (
     <>
-        {comments && <h2 className='my-10 uppercase font-bold text-stone-400 text-2xl'>Comments ({comments.length > 0 ? (comments.length) : (0)})</h2>}
+        {comments && <h2 className='my-10 uppercase font-bold text-2xl'>Comments ({comments.length > 0 ? (comments.length) : (0)})</h2>}
         <form onSubmit={(e) => mutatation.mutate(e)}>
             <label htmlFor='comment'></label>
             <textarea
                 id='comment'
                 name='comment'
                 ref={inputRef}
-                className="w-2/3 block  lg:w-1/3 rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="w-full max-h-[400px] min-h-[100px] sm:w-2/3 block  lg:w-1/3 rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
-             <button className='mt-10 bg-indigo-400 text-white border p-2 px-4 rounded-xl hover:bg-indigo-500 shadow-lg'>Comment</button>
+             <button className='mt-10 bg-black text-white border p-2 px-4 rounded-xl hover:bg-slate-800 shadow-lg'>Comment</button>
         </form>
     </>
   )

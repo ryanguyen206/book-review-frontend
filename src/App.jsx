@@ -9,7 +9,8 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import PrivateRoute from './utils/privateRoute'
+import PrivateRoute  from './utils/privateRoute'
+import LoginRoute from './utils/loginRoute'
 import ReviewPage from './pages/ReviewPage'
 
 function App() {
@@ -22,7 +23,10 @@ function App() {
             <Route path='/' element={<HomePage/>} exact />
             <Route path="/create" element={<CreateReviewPage />} />
           </Route>
-          <Route path="/login" element={<LoginPage />} />
+          <Route element={<LoginRoute/>}>
+            <Route path="/login" element={<LoginPage />} />
+          </Route>
+         
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/review/:id" element={<ReviewPage />} />
         </Routes>

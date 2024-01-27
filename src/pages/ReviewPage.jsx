@@ -8,7 +8,7 @@ const ReviewPage = ({}) => {
     let { id } = useParams();
 
     return (
-        <div className='md:p-10 bg-gray-200'>
+        <div className='md:p-10 border'>
             <SingleReviewHeader id={id}/>
             <SingleReviewFeed id={id}/>
         </div>

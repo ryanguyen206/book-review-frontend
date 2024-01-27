@@ -13,18 +13,18 @@ const SingleReviewFeed = ({id}) => {
     })
 
     return (
-        <div className='p-5 md:p-10'>
+        <div className='p-10  mt-10'>
             <Comment id={id} comments={comments}/>
             { comments && comments?.length > 0 && 
-                <div className='b'>
+                <div className=''>
                     {comments.map(message => (
-                        <div key={message.id} className='p-10 my-7 bg-gray-100 text-black'>
-                            <div className='flex flex-col md:flex-row md:justify-between'>
-                                <p className='order-2 md:order-1 text-indigo-400'>@{message?.username} says:</p> 
-                                <small className='order-1 md:order-2'>{timeAgo(message.created)}</small>           
+                        <div key={message.id} className=' my-10  text-black'>
+                            <div className='flex items-center align-middle gap-6'>
+                                <p className='font-bold'>@{message?.username}</p> 
+                                <small className=''>{timeAgo(message.created)}</small>           
                             </div>
                      
-                            <p className='mt-2 tracking-tighter'>{message.body}</p>
+                            <p className='mt-2 text-lg'>{message.body}</p>
                         </div>
                   
                     ))}
