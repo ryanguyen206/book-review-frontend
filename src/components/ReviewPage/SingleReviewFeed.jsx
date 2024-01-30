@@ -22,13 +22,10 @@ const SingleReviewFeed = ({id}) => {
                             <div className='flex items-center align-middle gap-6'>
                                 <p className='font-bold'>@{message?.username}</p> 
                                 <small className=''>{timeAgo(message.created)}</small>           
-                            </div>
-                     
+                            </div>  
                             <p className='mt-2 text-lg'>{message.body}</p>
                         </div>
-                  
                     ))}
-               
                 </div>       
             }
         </div>

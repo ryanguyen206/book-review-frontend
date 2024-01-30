@@ -21,12 +21,12 @@ const SingleReviewHeader = ({id}) => {
             <div className='p-10'>
                 <h1 className='font-bold text-xl'>@{review?.username}</h1>
                 <p className='uppercase mt-4 text-2xl font-medium mb-4'>{review?.book_title}</p>
-                <p className='px-2 py-1 rounded-xl bg-stone-400 text-white text-sm inline-block mr-4'> {review?.genre_name}</p> 
-                <p className='px-2 py-1 rounded-xl bg-stone-400 text-white text-sm inline-block'> {timeAgo(review.created)}</p>
+                <p className='px-2.5 py-1.5 rounded-xl bg-stone-400 text-white text-sm inline-block mr-4'> {review?.genre_name}</p> 
+                <p className='px-2.5 py-1.5 rounded-xl bg-stone-400 text-white text-sm inline-block mr-4'> {review?.view_count} views</p>
+                <p className='px-2.5 py-1.5 rounded-xl bg-stone-400 text-white text-sm inline-block'> {timeAgo(review.created)}</p>
                 <p className='mt-10  text-xl'>{review?.body}</p>
             </div>
         }
-   
       </>
     </>
   )
