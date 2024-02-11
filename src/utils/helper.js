@@ -4,6 +4,15 @@ export const handleGetRequest = async (link, options) => {
     return data
 }
 
+export const handleDeleteReview = async (id, authTokens) => {
+  const res = await fetch(`${import.meta.env.VITE_URL}/api/book-review/${id}/delete/`, {
+      method:'DELETE',
+      headers: {
+        'Authorization': `Bearer ${authTokens.access}`
+      }
+  })  
+}
+
 export const timeAgo = (timestamp) => {
     const current_time = new Date();
     const timestamp_date = new Date(timestamp);

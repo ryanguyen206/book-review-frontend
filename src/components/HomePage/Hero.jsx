@@ -46,7 +46,7 @@ const Hero = () => {
         </div>
         <div className='text-center'>
             <div className='grid justify-center mt-20 md:flex md:justify-center md:gap-20'>
-                    <div className='flex items-center gap-4 mb-6 md:mb-0 md:block'>
+                    <div className='flex items-center  gap-4 mb-6 md:mb-0 md:block'>
                         {data && <p className='text-4xl font-semibold'>{data.length}+</p>}
                         <h2 className='text-xl '>Reviews</h2>
                     </div>

@@ -30,7 +30,6 @@ const Comment = ({id, comments}) => {
                     'Authorization': `Bearer ${authTokens.access}`,
                 },
                 body: JSON.stringify({
-                    user : user.user_id,
                     book_review : id,
                     body : inputValue
                 })

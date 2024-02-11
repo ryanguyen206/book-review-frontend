@@ -2,33 +2,21 @@ import React from 'react'
 import { timeAgo } from '../../utils/helper'
 import { useContext } from 'react'
 import AuthContext from '../../context/AuthContext'
-import { useMutation } from 'react-query'
-import { useQueryClient } from 'react-query'
+import useDeleteReview from '../../hooks/useDeleteReview'
 import { Link } from 'react-router-dom'
+
 
 
 const SingleBookFeed = ({review}) => {
 
-    let {user, authTokens} = useContext(AuthContext)
+    let {user} = useContext(AuthContext)
 
-    const queryClient = useQueryClient()
+    const {mutation} = useDeleteReview();
 
 
-    const mutatation = useMutation({
-        mutationFn: (id) => handleDelete(id),
-        onSuccess: async () => {
-          await queryClient.invalidateQueries({ queryKey: ['reviews'] })
-        }
-     })
+  
 
-    const handleDelete = async (id) => {
-        const res = await fetch(`${import.meta.env.VITE_URL}/api/book-review/${id}/delete/`, {
-            method:'DELETE',
-            headers: {
-              'Authorization': `Bearer ${authTokens.access}`
-            }
-        })  
-    }
+ 
 
   return (
         <div className='border p-10 shadow-md flex flex-col justify-between' key={review.id}>
@@ -47,7 +35,7 @@ const SingleBookFeed = ({review}) => {
             <div className='flex flex-col sm:flex-row justify-between '>
                 <button className='w-44 sm:w-auto mt-10 bg-indigo-400 text-white border p-2 px-4 rounded-xl hover:bg-indigo-500 shadow-lg'><Link to={`/review/${review.id}`}>Join this review</Link></button>
                 {user.user_id === review?.creator ? 
-                <button className='w-44 sm:w-auto mt-4 sm:mt-10 bg-red-400 text-white border p-2 px-4 rounded-xl hover:bg-red-500 shadow-lg' onClick={() => mutatation.mutate(review.id)}>Delete</button> 
+                <button className='w-44 sm:w-auto mt-4 sm:mt-10 bg-red-400 text-white border p-2 px-4 rounded-xl hover:bg-red-500 shadow-lg' onClick={() => mutation.mutate(review.id)}>Delete</button> 
                 : null}
             </div>
           
