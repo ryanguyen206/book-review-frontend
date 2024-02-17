@@ -12,12 +12,7 @@ const SingleBookFeed = ({review}) => {
     let {user} = useContext(AuthContext)
 
     const {mutation} = useDeleteReview();
-
-
-  
-
- 
-
+    
   return (
         <div className='border p-10 shadow-md flex flex-col justify-between' key={review.id}>
             <div className='flex flex-col justify-center md:flex-row md:justify-between'>

@@ -1,19 +1,11 @@
 import React from 'react'
-import {useQuery} from 'react-query'
-import { handleGetRequest } from '../../utils/helper'
 import SingleBookFeed from './SingleBookFeed'
-
-
-
+import useGetAllReviews from '../../hooks/useGetAllReviews';
 
 const BookFeed = ({currentGenre}) => {
 
 
-  const {data} = useQuery({
-      queryKey:['reviews'], 
-      queryFn: async () => await handleGetRequest(`${import.meta.env.VITE_URL}/api/book-review/`),
-  })
-
+  const {data} = useGetAllReviews()
   const filteredReviews = currentGenre ? data.filter((review) => review.genre_name === currentGenre) : data;
 
   return (

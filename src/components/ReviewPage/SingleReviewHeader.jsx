@@ -1,19 +1,16 @@
 import React from 'react'
-import { useQuery } from 'react-query'
-import { handleGetRequest, timeAgo } from '../../utils/helper'
+import { timeAgo } from '../../utils/helper'
 import { MdDelete } from "react-icons/md";
 import { FaPencil } from "react-icons/fa6";
 import { BiShow } from "react-icons/bi";
 import { Link } from 'react-router-dom';
 import useDeleteReview from '../../hooks/useDeleteReview';
+import useGetOneReview from '../../hooks/useGetOneReview';
 
 const SingleReviewHeader = ({id, url, onProfilePage}) => {
 
-  const {data : review} = useQuery({
-    queryKey:['review', id],
-    queryFn: () => handleGetRequest(url),
-  })
 
+  const {review} = useGetOneReview(id, url)
   const {mutation} = useDeleteReview()
 
 
@@ -25,7 +22,7 @@ const SingleReviewHeader = ({id, url, onProfilePage}) => {
                 {!onProfilePage ? <h1 className='font-bold text-xl'>@{review.username}</h1> :
                   <div className='flex items-center gap-10'>
                       <Link to={`/review/${review.id}`}><BiShow size={24} className='hover:cursor-pointer'/></Link>
-                      <FaPencil size={16} className='hover:cursor-pointer'/>
+                      <Link to={`/edit/${review.id}`}><FaPencil size={16} className='hover:cursor-pointer'/></Link>
                       <MdDelete size={24} className='hover:cursor-pointer' onClick={() => mutation.mutate(id)}/>
                   </div>
                 

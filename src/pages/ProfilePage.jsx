@@ -17,7 +17,7 @@ const ProfilePage = () => {
     const [totalViewCount, setTotalViewCount] = useState(null)
 
     const {data : userPosts} = useQuery({
-        queryKey: ['user'],
+        queryKey: ['reviews', user.username],
         queryFn: () => handleGetRequest(getAllUserPostsURL),
         onSuccess: (userPosts) => {
             let tempCount = 0
@@ -32,7 +32,7 @@ const ProfilePage = () => {
     
   return (
     <div>
-        <h1 className='text-2xl mt-10 mb-4'>Your Stats</h1>
+        <h1 className='text-center text-2xl mt-10 mb-4'>Your Stats</h1>
         <hr/>
 
         <ProfileStats userPosts={userPosts} totalViewCount={totalViewCount} onProfilePage={true}/>
@@ -42,7 +42,7 @@ const ProfilePage = () => {
 
 
             <div className='mt-10 col-span-2'>
-                <h2 className='text-xl mt-10 mb-4'>Posts by you</h2>
+                <h2 className='text-center md:text-start text-xl mt-10 mb-4'>Posts by you</h2>
                 {userPosts?.map(posts => (
                     <div className='border mb-10' key={posts.id}>
                         <SingleReviewHeader id={posts.id} url={`${import.meta.env.VITE_URL}/api/book-review/${posts.id}/`} onProfilePage={true}/>

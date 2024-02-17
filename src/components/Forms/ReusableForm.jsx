@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 
-const ReusableForm = ({ formState, handleChange, handleSubmit, formFields, buttonText, mutation }) => {
+const ReusableForm = ({ formState, handleChange, handleSubmit, formFields, buttonText, mutation, message}) => {
   const isLoading = mutation?.isLoading || false;
     
   return (
+    formState &&
     <form className="space-y-6" onSubmit={handleSubmit}>
       {formFields.map((field) => (
         <div key={field.name}>
@@ -55,7 +56,7 @@ const ReusableForm = ({ formState, handleChange, handleSubmit, formFields, butto
           className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5  font-semibold  text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           disabled={isLoading}
         >
-            {isLoading ? 'Creating Review...' : buttonText}
+            {isLoading ? message : buttonText}
         </button>
       </div>
     </form>

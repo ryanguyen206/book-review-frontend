@@ -9,31 +9,31 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const CreateReviewForm = () => {
+const EditReviewForm = ({id, review}) => {
 
     let {user, authTokens} = useContext(AuthContext)
     let {genres} = useGenre()
+    const queryClient = useQueryClient();
 
 
-
-    const { inputValues, handleInputChange, resetForm} = useInputChange({
-      book_title: '',
-      review_title: '',
-      genre: 1,
-      body: '',
+    const { inputValues, handleInputChange} = useInputChange({
+      book_title: review?.book_title || "",
+      review_title: review?.review_title || "",
+      genre: review?.genre || "",
+      body: review?.body || "",
     });
 
     const mutation = useMutation({
-      mutationFn: (e) => handleSubmit(e),
+      mutationFn: (e) => handleEdit(e),
       onSuccess: async () => {
         await queryClient.invalidateQueries({ queryKey: ['reviews'] })
       }
     })
 
-    const handleSubmit = async (e) => {
+    const handleEdit = async (e) => {
         e.preventDefault()
-        const res = await fetch(`${import.meta.env.VITE_URL}/api/book-review/`, {
-          method:'POST',
+        const res = await fetch(`${import.meta.env.VITE_URL}/api/book-review/${id}/update/`, {
+          method:'PUT',
           headers: {
             'Content-Type':'application/json',
             'Authorization': `Bearer ${authTokens.access}`,
@@ -46,9 +46,8 @@ const CreateReviewForm = () => {
             body: inputValues.body
           })
         })
-        if (res.status === 201) {
-          resetForm()
-          toast.success('Review Created');
+        if (res.status === 200) {
+          toast.success('Review Updated');
         }
     }
 
@@ -65,7 +64,7 @@ const CreateReviewForm = () => {
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Create your book review
+          Edit your review
         </h2>
       </div>
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -74,9 +73,9 @@ const CreateReviewForm = () => {
              handleChange={handleInputChange}
              handleSubmit={(e) => mutation.mutate(e)}
              formFields={formFields}
-             buttonText={'Create Review'}
+             buttonText={'Update Review'}
              mutation = {mutation}
-             message={'Creating Review...'}
+             message={'Updating Review...'}
         />
       </div>
     </div>
@@ -84,4 +83,4 @@ const CreateReviewForm = () => {
   )
 }
 
-export default CreateReviewForm
+export default EditReviewForm
