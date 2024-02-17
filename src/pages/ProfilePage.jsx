@@ -36,12 +36,10 @@ const ProfilePage = () => {
         <hr/>
 
         <ProfileStats userPosts={userPosts} totalViewCount={totalViewCount} onProfilePage={true}/>
-
+        <hr/>
   
-        <div className='grid grid-cols-3 gap-x-12'>
-
-
-            <div className='mt-10 col-span-2'>
+        <div className='lg:grid lg:grid-cols-3 gap-x-12'>
+            <div className='mt-10 md:col-span-2'>
                 <h2 className='text-center md:text-start text-xl mt-10 mb-4'>Posts by you</h2>
                 {userPosts?.map(posts => (
                     <div className='border mb-10' key={posts.id}>
@@ -51,7 +49,7 @@ const ProfilePage = () => {
                 ))}
             </div>
 
-            <div className='mt-10 col-span-1 text-center'>
+            <div className='mt-10 lg:col-span-1 text-center'>
                 <h2 className='text-xl mt-10 mb-4'>Recent Activity</h2>
             </div>
         </div>

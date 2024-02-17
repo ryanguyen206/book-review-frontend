@@ -27,7 +27,7 @@ const SingleReviewHeader = ({id, url, onProfilePage}) => {
                   </div>
                 
                 }
-                <div className='lg:flex gap-10 gap-y-10 items-center'>
+                <div className='xl:flex gap-10 gap-y-10 items-center'>
                   <p className='uppercase mt-4 text-2xl font-medium mb-4'>{review?.book_title}</p>
                   <div>
                     <p className='px-2.5 py-1.5 mt-2 lg:mt-0 rounded-xl bg-stone-400 text-white text-sm inline-block mr-4'> {review?.genre_name}</p> 
