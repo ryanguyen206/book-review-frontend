@@ -6,6 +6,7 @@ import { useMutation, useQueryClient } from 'react-query';
 import useInputChange from '../../hooks/useInputChange';
 import ReusableForm from './ReusableForm';
 import {toast} from 'react-toastify';
+import { useNavigate } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -15,6 +16,7 @@ const EditReviewForm = ({id, review}) => {
     let {genres} = useGenre()
     const queryClient = useQueryClient();
 
+    const navigate = useNavigate()
 
     const { inputValues, handleInputChange} = useInputChange({
       book_title: review?.book_title || "",
@@ -48,6 +50,7 @@ const EditReviewForm = ({id, review}) => {
         })
         if (res.status === 200) {
           toast.success('Review Updated');
+          navigate('/profile')
         }
     }
 
