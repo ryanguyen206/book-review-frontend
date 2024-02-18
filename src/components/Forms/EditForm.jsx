@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useContext } from 'react'
 import AuthContext from '../../context/AuthContext'
 import useGenre from '../../hooks/useGenre'
@@ -24,6 +24,14 @@ const EditReviewForm = ({id, review}) => {
       genre: review?.genre || "",
       body: review?.body || "",
     });
+
+
+    useEffect(() => {
+        if (user && review && user.user_id !== review.creator) {
+          navigate('/unauthorized'); 
+        }
+      }, [user, review, navigate]);
+
 
     const mutation = useMutation({
       mutationFn: (e) => handleEdit(e),
