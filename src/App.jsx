@@ -25,7 +25,6 @@ function App() {
           <Route element={<PrivateRoute/>}>
             <Route path='/' element={<HomePage/>} exact />
             <Route path="/create" element={<CreateReviewPage />} />
-            <Route path="/register" element={<RegisterPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/review/:id" element={<ReviewPage />} />
             <Route path="/edit/:id" element={<EditPage />} />
@@ -33,6 +32,7 @@ function App() {
           <Route element={<LoginRoute/>}>
             <Route path="/login" element={<LoginPage />} />
           </Route>
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
         </Routes>
 
