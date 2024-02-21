@@ -14,6 +14,8 @@ const CreateReviewForm = () => {
     let {user, authTokens} = useContext(AuthContext)
     let {genres} = useGenre()
 
+    const queryClient = useQueryClient();
+
 
 
     const { inputValues, handleInputChange, resetForm} = useInputChange({
