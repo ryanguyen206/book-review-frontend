@@ -5,12 +5,12 @@ import { handleGetRequest } from '../utils/helper'
 
 const useGetAllReviews = () => {
 
-    const {data} = useQuery({
+    const {data, isFetching} = useQuery({
         queryKey:['reviews'], 
         queryFn: async () => await handleGetRequest(`${import.meta.env.VITE_URL}/api/book-review/`),
     })
 
-    return {data}
+    return {data, isFetching}
 }
 
 export default useGetAllReviews

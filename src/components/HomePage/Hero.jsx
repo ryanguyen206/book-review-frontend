@@ -3,6 +3,7 @@ import hero from '../../assets/hero.jpg'
 import { useQuery } from 'react-query'
 import { handleGetRequest } from '../../utils/helper'
 import { TypeAnimation } from 'react-type-animation';
+import Skeleton from '../Skeleton';
 
 
 
@@ -12,12 +13,12 @@ const Hero = () => {
     
 
 
-    const {data} = useQuery({
+    const {data, isFetching} = useQuery({
         queryKey:['reviews'], 
         queryFn: async () => await handleGetRequest(`${import.meta.env.VITE_URL}/api/book-review/`),
     })
 
-    const {data : user_count} = useQuery({
+    const {data : user_count, isFetching : isFetchingUser} = useQuery({
         queryKey:['user_count'], 
         queryFn: async () => await handleGetRequest(`${import.meta.env.VITE_URL}/api/user_count`),
     })
@@ -47,12 +48,21 @@ const Hero = () => {
         <div className='text-center'>
             <div className='grid justify-center mt-20 md:flex md:justify-center md:gap-20'>
                     <div className='flex items-center  gap-4 mb-6 md:mb-0 md:block'>
+                        {isFetching ? <Skeleton/> :           
+                        <>
                         {data && <p className='text-4xl font-semibold'>{data.length}+</p>}
                         <h2 className='text-xl '>Reviews</h2>
+                        </>
+      
+                        }
+              
                     </div>
                     <div className='flex items-center gap-4 md:block '>
+                        {isFetching ? <Skeleton/> :
+                        <>
                         {user_count && <p className='text-4xl font-semibold'>{user_count.user_count}+</p>}
                         <h2 className='text-xl '>Users</h2>
+                        </>}                    
                     </div>
            
             </div>

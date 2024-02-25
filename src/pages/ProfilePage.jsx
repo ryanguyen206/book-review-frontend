@@ -1,10 +1,13 @@
-import React, {useContext, useState} from 'react'
+import React, {Suspense, useContext, useState} from 'react'
 import { handleGetRequest } from '../utils/helper'
 import AuthContext from '../context/AuthContext'
 import { useQuery } from 'react-query'
 import ProfileStats from '../components/ProfilePage/ProfileStats'
 import RecentActivity from '../components/ProfilePage/RecentActivity'
 import UserPosts from '../components/ProfilePage/UserPosts'
+import ReviewSkeleton from '../components/ReviewSkeleton'
+import Skeleton from '../components/Skeleton'
+ReviewSkeleton
 
 
 
@@ -15,7 +18,7 @@ const ProfilePage = () => {
 
     const [totalViewCount, setTotalViewCount] = useState(0)
 
-    const {data : userPosts} = useQuery({
+    const {data : userPosts, isFetching} = useQuery({
         queryKey: ['reviews', user.username],
         queryFn: () => handleGetRequest(getAllUserPostsURL),
         onSuccess: (userPosts) => {
@@ -29,11 +32,9 @@ const ProfilePage = () => {
 
   return (
     <div>
-
-        <ProfileStats userPosts={userPosts} totalViewCount={totalViewCount} onProfilePage={true}/>
-     
+        <ProfileStats isFetching={isFetching} userPosts={userPosts} totalViewCount={totalViewCount} onProfilePage={true}/>
         <div className='lg:grid lg:grid-cols-5 gap-x-12'>
-            <UserPosts userPosts={userPosts}/>
+            <UserPosts userPosts={userPosts} isFetching={isFetching}/>
             <RecentActivity user={user}/>
         </div>
     </div>

@@ -1,7 +1,23 @@
 import React from 'react'
 import SingleReviewHeader from '../ReviewPage/SingleReviewHeader'
+import ReviewSkeleton from '../ReviewSkeleton'
 
-const UserPosts = ({userPosts}) => {
+
+const UserPosts = ({userPosts, isFetching}) => {
+
+  
+  if (isFetching) {
+    return (
+        <div className='mt-28 md:col-span-3'>
+            <ReviewSkeleton /> 
+            <br/>
+            <ReviewSkeleton /> 
+            <br/>
+            <ReviewSkeleton /> 
+        </div>
+    ) 
+
+}
 
   return (
     <div className='mt-10 md:col-span-3'>
