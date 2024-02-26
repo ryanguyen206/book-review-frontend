@@ -2,14 +2,16 @@ import React from 'react'
 import useGenre from '../../hooks/useGenre'
 import { v4 as uuidv4 } from 'uuid';
 
-const Genre = ({setCurrentGenre, currentGenre}) => {
+const Genre = ({setCurrentGenre, currentGenre, setCurrentPage}) => {
 
   
     let {genres} = useGenre()
 
     const handleGenreClick = (genre) => {
         setCurrentGenre((prevGenre) => (prevGenre === genre ? null : genre));
+        setCurrentPage(1)
     };
+    
 
     return (
         <div className='mt-20 text-center text-indigo-400'>

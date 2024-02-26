@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react'
 const HomePage = () => {
 
   const [currentGenre, setCurrentGenre] = useState(null)
-
+  const [currentPage, setCurrentPage] = useState(1);
   
   return (
     <div>
@@ -16,10 +16,13 @@ const HomePage = () => {
         <Genre
           currentGenre={currentGenre}
           setCurrentGenre={setCurrentGenre}
+          setCurrentPage={setCurrentPage}
         />
         <BookFeed
           currentGenre={currentGenre}
           setCurrentGenre={setCurrentGenre}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
         />
     </div>
   )
