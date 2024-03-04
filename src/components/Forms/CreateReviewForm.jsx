@@ -7,6 +7,7 @@ import useInputChange from '../../hooks/useInputChange';
 import ReusableForm from './ReusableForm';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 
 const CreateReviewForm = () => {
@@ -15,7 +16,7 @@ const CreateReviewForm = () => {
     let {genres} = useGenre()
 
     const queryClient = useQueryClient();
-
+    const navigate = useNavigate()
 
 
     const { inputValues, handleInputChange, resetForm} = useInputChange({
@@ -49,8 +50,10 @@ const CreateReviewForm = () => {
           })
         })
         if (res.status === 201) {
+          const data = await res.json()
           resetForm()
           toast.success('Review Created');
+          navigate(`/review/${data.id}`)
         }
     }
 
